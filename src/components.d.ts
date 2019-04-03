@@ -35,6 +35,9 @@ export namespace Components {
   interface MyFirstComponentAttributes extends StencilHTMLAttributes {
     'name'?: string;
   }
+
+  interface MyModal {}
+  interface MyModalAttributes extends StencilHTMLAttributes {}
 }
 
 declare global {
@@ -43,6 +46,7 @@ declare global {
     'AppProfile': Components.AppProfile;
     'AppRoot': Components.AppRoot;
     'MyFirstComponent': Components.MyFirstComponent;
+    'MyModal': Components.MyModal;
   }
 
   interface StencilIntrinsicElements {
@@ -50,6 +54,7 @@ declare global {
     'app-profile': Components.AppProfileAttributes;
     'app-root': Components.AppRootAttributes;
     'my-first-component': Components.MyFirstComponentAttributes;
+    'my-modal': Components.MyModalAttributes;
   }
 
 
@@ -77,11 +82,18 @@ declare global {
     new (): HTMLMyFirstComponentElement;
   };
 
+  interface HTMLMyModalElement extends Components.MyModal, HTMLStencilElement {}
+  var HTMLMyModalElement: {
+    prototype: HTMLMyModalElement;
+    new (): HTMLMyModalElement;
+  };
+
   interface HTMLElementTagNameMap {
     'app-home': HTMLAppHomeElement
     'app-profile': HTMLAppProfileElement
     'app-root': HTMLAppRootElement
     'my-first-component': HTMLMyFirstComponentElement
+    'my-modal': HTMLMyModalElement
   }
 
   interface ElementTagNameMap {
@@ -89,6 +101,7 @@ declare global {
     'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
     'my-first-component': HTMLMyFirstComponentElement;
+    'my-modal': HTMLMyModalElement;
   }
 
 
