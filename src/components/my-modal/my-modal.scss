@@ -10,4 +10,13 @@ my-modal {
     z-index: 100;
     display: none;
     padding: 16px;
+
+    button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font: inherit;
+        cursor: pointer;
+        color: #fa923f;
+    }
 }
