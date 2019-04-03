@@ -8,4 +8,6 @@ my-modal {
     width: 350px;
     left: calc(50% - 175px);
     z-index: 100;
+    display: none;
+    padding: 16px;
 }

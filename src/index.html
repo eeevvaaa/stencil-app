@@ -20,7 +20,17 @@
 
   <!-- <app-root></app-root> -->
   <my-first-component name="Eva"></my-first-component>
-  <my-modal></my-modal>
+  <button>Open Modal</button>
+  <my-modal title = "Info" content = "This is modal content"></my-modal>
+  <my-backdrop></my-backdrop>
+
+  <script>
+    let btn = document.querySelector('button');
+    let modal = document.querySelector('my-modal');
+    btn.addEventListener('click', () =>{
+      modal.open();
+    });
+  </script>
 
 </body>
 </html>

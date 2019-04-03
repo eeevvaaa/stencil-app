@@ -29,6 +29,9 @@ export namespace Components {
   interface AppRoot {}
   interface AppRootAttributes extends StencilHTMLAttributes {}
 
+  interface MyBackdrop {}
+  interface MyBackdropAttributes extends StencilHTMLAttributes {}
+
   interface MyFirstComponent {
     'name': string;
   }
@@ -36,8 +39,15 @@ export namespace Components {
     'name'?: string;
   }
 
-  interface MyModal {}
-  interface MyModalAttributes extends StencilHTMLAttributes {}
+  interface MyModal {
+    'content': string;
+    'open': () => void;
+    'title': string;
+  }
+  interface MyModalAttributes extends StencilHTMLAttributes {
+    'content'?: string;
+    'title'?: string;
+  }
 }
 
 declare global {
@@ -45,6 +55,7 @@ declare global {
     'AppHome': Components.AppHome;
     'AppProfile': Components.AppProfile;
     'AppRoot': Components.AppRoot;
+    'MyBackdrop': Components.MyBackdrop;
     'MyFirstComponent': Components.MyFirstComponent;
     'MyModal': Components.MyModal;
   }
@@ -53,6 +64,7 @@ declare global {
     'app-home': Components.AppHomeAttributes;
     'app-profile': Components.AppProfileAttributes;
     'app-root': Components.AppRootAttributes;
+    'my-backdrop': Components.MyBackdropAttributes;
     'my-first-component': Components.MyFirstComponentAttributes;
     'my-modal': Components.MyModalAttributes;
   }
@@ -76,6 +88,12 @@ declare global {
     new (): HTMLAppRootElement;
   };
 
+  interface HTMLMyBackdropElement extends Components.MyBackdrop, HTMLStencilElement {}
+  var HTMLMyBackdropElement: {
+    prototype: HTMLMyBackdropElement;
+    new (): HTMLMyBackdropElement;
+  };
+
   interface HTMLMyFirstComponentElement extends Components.MyFirstComponent, HTMLStencilElement {}
   var HTMLMyFirstComponentElement: {
     prototype: HTMLMyFirstComponentElement;
@@ -92,6 +110,7 @@ declare global {
     'app-home': HTMLAppHomeElement
     'app-profile': HTMLAppProfileElement
     'app-root': HTMLAppRootElement
+    'my-backdrop': HTMLMyBackdropElement
     'my-first-component': HTMLMyFirstComponentElement
     'my-modal': HTMLMyModalElement
   }
@@ -100,6 +119,7 @@ declare global {
     'app-home': HTMLAppHomeElement;
     'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
+    'my-backdrop': HTMLMyBackdropElement;
     'my-first-component': HTMLMyFirstComponentElement;
     'my-modal': HTMLMyModalElement;
   }
