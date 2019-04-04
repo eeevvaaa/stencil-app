@@ -1,4 +1,4 @@
-import { Component, Method, Element, Prop } from '@stencil/core';
+import { Component, Method, Element, Prop, State } from '@stencil/core';
 
 @Component({
     tag: 'my-modal',
@@ -6,7 +6,10 @@ import { Component, Method, Element, Prop } from '@stencil/core';
 })
 export class MyModal {
     buttons = ['okay', 'cancel']
-    showOptions = false;
+
+    // tell stencil to watch changes
+    @State() showOptions = false;
+
     // declare a reference to host the element
     @Element() modalEl: HTMLElement;
 
@@ -14,10 +17,15 @@ export class MyModal {
     @Prop() title: string;
     @Prop() content: string;
 
-    // make it callable from outside
+    // make it callable from outside, expose to public
     @Method()
     open() {
-      this.modalEl.style.display = 'block'; 
+        this.modalEl.style.display = 'block'; 
+    }
+
+    closeModalHandler() {
+        this.modalEl.style.display = 'none';
+        this.showOptions = false;
     }
 
     showOptionsHandler() {
@@ -25,16 +33,20 @@ export class MyModal {
     }
 
     render() {
+        let options = null;
+        if (this.showOptions) {
+            options = (this.buttons.map(btn => (
+                <button onClick = {() => this.closeModalHandler()}>{btn}</button>
+            )));
+        }
         return (
             <div>
                 <h1>{this.title}</h1>
                 <p>{this.content}</p>
                 <br />
-                <button onClick={this.showOptionsHandler}>Show Options</button>
+                <button onClick= {() => this.showOptionsHandler()}>Show Options</button>
                 <br />
-                {this.buttons.map(btn => (
-                    <button>{btn}</button>
-                ))}
+                {options}
 
             </div>
         )
