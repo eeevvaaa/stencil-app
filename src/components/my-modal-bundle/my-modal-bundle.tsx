@@ -8,7 +8,7 @@ export class MyModalBundle {
 
     @State() show = false;
 
-    @Prop() title: string;
+    @Prop() bundleTitle: string;
     @Prop() content: string;
 
     @Method()
@@ -17,7 +17,8 @@ export class MyModalBundle {
     }
 
     // with similar naming conventions, we can specify which component to listen to
-    @Listen('my-modal: onClose')
+    // @Listen('my-modal:onClose') // this throws error, my-modal is not a valid prefix
+    @Listen('onClose')
     closeModalHandler() {
         this.show = false;
     }
@@ -27,7 +28,7 @@ export class MyModalBundle {
         if (this.show) {
             content = [
                 <my-backdrop></my-backdrop>,
-                <my-modal title = {this.title} content = {this.content}></my-modal>
+                <my-modal modaltitle = {this.bundleTitle} content = {this.content}></my-modal>
             ]
         }
         return content

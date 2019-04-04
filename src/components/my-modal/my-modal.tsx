@@ -14,7 +14,7 @@ export class MyModal {
     @Element() modalEl: HTMLElement;
 
     // exposed properties
-    @Prop() title: string;
+    @Prop() modaltitle: string;
     @Prop() content: string;
 
     @Event() onClose: EventEmitter;
@@ -43,15 +43,15 @@ export class MyModal {
                 <button onClick = {() => this.closeModalHandler()}>{btn}</button>
             )));
         }
+        console.log(this.modaltitle)
         return (
             <div>
-                <h1>{this.title}</h1>
+                <h1>{this.modaltitle}</h1>
                 <p>{this.content}</p>
                 <hr />
                 <button onClick= {() => this.showOptionsHandler()}>Show Options</button>
                 <hr />
                 {options}
-
             </div>
         )
     }

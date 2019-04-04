@@ -40,24 +40,24 @@ export namespace Components {
   }
 
   interface MyModalBundle {
+    'bundleTitle': string;
     'content': string;
     'open': () => void;
-    'title': string;
   }
   interface MyModalBundleAttributes extends StencilHTMLAttributes {
+    'bundleTitle'?: string;
     'content'?: string;
-    'title'?: string;
   }
 
   interface MyModal {
     'content': string;
+    'modaltitle': string;
     'open': () => void;
-    'title': string;
   }
   interface MyModalAttributes extends StencilHTMLAttributes {
     'content'?: string;
+    'modaltitle'?: string;
     'onOnClose'?: (event: CustomEvent) => void;
-    'title'?: string;
   }
 }
 
