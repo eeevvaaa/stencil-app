@@ -21,12 +21,12 @@
   <!-- <app-root></app-root> -->
   <my-first-component name="Eva"></my-first-component>
   <button>Open Modal</button>
-  <my-modal title = "Info" content = "This is modal content"></my-modal>
-  <!-- <my-backdrop></my-backdrop> -->
+  <my-modal-bundle title = "Info" content = "This is modal content"></my-modal-bundle>
+  <!-- <my-backdrop></my-backdrop> --> <!-- bundled -->
 
   <script>
     let btn = document.querySelector('button');
-    let modal = document.querySelector('my-modal');
+    let modal = document.querySelector('my-modal-bundle');
     btn.addEventListener('click', () =>{
       modal.open();
     });

@@ -39,6 +39,16 @@ export namespace Components {
     'name'?: string;
   }
 
+  interface MyModalBundle {
+    'content': string;
+    'open': () => void;
+    'title': string;
+  }
+  interface MyModalBundleAttributes extends StencilHTMLAttributes {
+    'content'?: string;
+    'title'?: string;
+  }
+
   interface MyModal {
     'content': string;
     'open': () => void;
@@ -46,6 +56,7 @@ export namespace Components {
   }
   interface MyModalAttributes extends StencilHTMLAttributes {
     'content'?: string;
+    'onOnClose'?: (event: CustomEvent) => void;
     'title'?: string;
   }
 }
@@ -57,6 +68,7 @@ declare global {
     'AppRoot': Components.AppRoot;
     'MyBackdrop': Components.MyBackdrop;
     'MyFirstComponent': Components.MyFirstComponent;
+    'MyModalBundle': Components.MyModalBundle;
     'MyModal': Components.MyModal;
   }
 
@@ -66,6 +78,7 @@ declare global {
     'app-root': Components.AppRootAttributes;
     'my-backdrop': Components.MyBackdropAttributes;
     'my-first-component': Components.MyFirstComponentAttributes;
+    'my-modal-bundle': Components.MyModalBundleAttributes;
     'my-modal': Components.MyModalAttributes;
   }
 
@@ -100,6 +113,12 @@ declare global {
     new (): HTMLMyFirstComponentElement;
   };
 
+  interface HTMLMyModalBundleElement extends Components.MyModalBundle, HTMLStencilElement {}
+  var HTMLMyModalBundleElement: {
+    prototype: HTMLMyModalBundleElement;
+    new (): HTMLMyModalBundleElement;
+  };
+
   interface HTMLMyModalElement extends Components.MyModal, HTMLStencilElement {}
   var HTMLMyModalElement: {
     prototype: HTMLMyModalElement;
@@ -112,6 +131,7 @@ declare global {
     'app-root': HTMLAppRootElement
     'my-backdrop': HTMLMyBackdropElement
     'my-first-component': HTMLMyFirstComponentElement
+    'my-modal-bundle': HTMLMyModalBundleElement
     'my-modal': HTMLMyModalElement
   }
 
@@ -121,6 +141,7 @@ declare global {
     'app-root': HTMLAppRootElement;
     'my-backdrop': HTMLMyBackdropElement;
     'my-first-component': HTMLMyFirstComponentElement;
+    'my-modal-bundle': HTMLMyModalBundleElement;
     'my-modal': HTMLMyModalElement;
   }
 

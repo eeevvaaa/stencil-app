@@ -1,4 +1,4 @@
-import { Component, Method, Element, Prop, State } from '@stencil/core';
+import { Component, Method, Element, Prop, State, Event, EventEmitter } from '@stencil/core';
 
 @Component({
     tag: 'my-modal',
@@ -6,7 +6,7 @@ import { Component, Method, Element, Prop, State } from '@stencil/core';
 })
 export class MyModal {
     buttons = ['okay', 'cancel']
-
+ 
     // tell stencil to watch changes
     @State() showOptions = false;
 
@@ -17,6 +17,8 @@ export class MyModal {
     @Prop() title: string;
     @Prop() content: string;
 
+    @Event() onClose: EventEmitter;
+
     // make it callable from outside, expose to public
     @Method()
     open() {
@@ -24,8 +26,10 @@ export class MyModal {
     }
 
     closeModalHandler() {
-        this.modalEl.style.display = 'none';
+        // this.modalEl.style.display = 'none'; // commented out after adding event emitter
         this.showOptions = false;
+        this.onClose.emit()
+        
     }
 
     showOptionsHandler() {
@@ -43,9 +47,9 @@ export class MyModal {
             <div>
                 <h1>{this.title}</h1>
                 <p>{this.content}</p>
-                <br />
+                <hr />
                 <button onClick= {() => this.showOptionsHandler()}>Show Options</button>
-                <br />
+                <hr />
                 {options}
 
             </div>
